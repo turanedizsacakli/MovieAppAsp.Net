@@ -1,0 +1,26 @@
+﻿@model List<Movie>
+
+
+        <h1>Film Listesi</h1>
+
+    <div id="filmler">
+
+        @foreach (var movie in Model)
+        {
+
+        <div class="film">
+            <img src="/img/@movie.ImageUrl" alt="@movie.Name"/>
+                <p>@movie.Name</p>
+                <p>@movie.Description</p>
+                <p>@movie.Director</p>
+            <p>
+                <ul>
+                        @foreach (var aktor in movie.Aktors)
+                    {
+                        <li>@aktor</li>
+                    }
+                </ul>
+            </p>
+        </div>
+        }
+    </div>
