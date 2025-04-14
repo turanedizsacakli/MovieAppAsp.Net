@@ -1,0 +1,17 @@
+﻿@model Movie
+
+
+    <div class="film">
+    <img src="/img/@Model.ImageUrl" alt="@Model.Name" width="300" />
+        <p>@Model.Name</p>
+        <p>@Model.Description</p>
+        <p>@Model.Director</p>
+        <p>
+            <ul>
+            @foreach (var aktor in Model.Aktors)
+                {
+                    <li>@aktor</li>
+                }
+            </ul>
+        </p>
+    </div>
