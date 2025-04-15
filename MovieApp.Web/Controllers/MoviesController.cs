@@ -39,8 +39,22 @@ namespace MovieApp.Web.Controllers
                         ImageUrl="3.png"
                             }
             };
+            var genreOfFilms = new List<Genre>()
+            {
+                new Genre{Name="Macera"},
+                new Genre{Name="Aşk"},
+                new Genre{Name="Komedi"},
+                new Genre{Name="Savaş"}
 
-            return View("Movies", filmList);
+            };
+
+            var model = new MovieGenreViewModel()
+            {
+                Movies = filmList,
+                Genres = genreOfFilms
+            };
+
+            return View("Movies", model);
         }
         public IActionResult Details()
         {
