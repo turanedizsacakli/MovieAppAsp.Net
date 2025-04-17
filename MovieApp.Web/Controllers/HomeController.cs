@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MovieApp.Web.Data;
 using MovieApp.Web.Models;
 
 namespace MovieApp.Web.Controllers
@@ -7,24 +8,27 @@ namespace MovieApp.Web.Controllers
     {
         public IActionResult Index()
         {
-            string movieName = "film başlığı : ";
-            string movieExplanation = "film açıklaması : ";
-            string movieDirector = "filmin yönetmeni : ";
-            string[] aktors = { "oyuncu 1 ", "oyuncu 2 " };
-
-            Movie m = new Movie();
-
-            m.Name = movieName;
-            m.Description = movieExplanation;
-            m.Aktors = aktors;
-            m.ImageUrl = "1.png";
+            var model = new HomePageViewModel
+            {
+                PopularFilms = MovieRepository.Movies
+            };
 
 
-            return View(m);
+            return View(model);
         }
 
         public IActionResult About()
         {
+            //var genreOfFilms = new List<Genre>()
+            //{
+            //    new Genre{Name="Macera"},
+            //    new Genre{Name="Aşk"},
+            //    new Genre{Name="Komedi"},
+            //    new Genre{Name="Savaş"}
+
+            //};
+            //return View(genreOfFilms );
+
             return View();
         }
     }

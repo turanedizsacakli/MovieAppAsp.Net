@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MovieApp.Web.Data;
 using MovieApp.Web.Models;
 
 namespace MovieApp.Web.Controllers
@@ -16,42 +17,20 @@ namespace MovieApp.Web.Controllers
         }
         public IActionResult List()
         {
-            var filmList = new List<Movie>()
-            {
-                new Movie{ 
-                        Name="film 1", 
-                        Description= "açıklama 1", 
-                        Director="yönetmen 1",
-                        Aktors= new string[]{"oyuncu 1", "oyuncu 2" },                    
-                        ImageUrl="1.png"},
-                new Movie{ 
-                        Name="film 2", 
-                        Description= "açıklama 2", 
-                        Director="yönetmen 2",
-                        Aktors=new string[]{"oyuncu 1", "oyuncu 2"},
-                        ImageUrl="2.png"
-                            },
-                new Movie{ 
-                        Name="film 3", 
-                        Description= "açıklama 3", 
-                        Director="yönetmen 3",
-                        Aktors=new string[]{"oyuncu 1", "oyuncu 2" },
-                        ImageUrl="3.png"
-                            }
-            };
-            var genreOfFilms = new List<Genre>()
-            {
-                new Genre{Name="Macera"},
-                new Genre{Name="Aşk"},
-                new Genre{Name="Komedi"},
-                new Genre{Name="Savaş"}
+            
+            //var genreOfFilms = new List<Genre>()
+            //{
+            //    new Genre{Name="Macera"},
+            //    new Genre{Name="Aşk"},
+            //    new Genre{Name="Komedi"},
+            //    new Genre{Name="Savaş"}
 
-            };
+            //};
 
-            var model = new MovieGenreViewModel()
+            var model = new MoviesViewModel()
             {
-                Movies = filmList,
-                Genres = genreOfFilms
+                Movies = MovieRepository.Movies
+                //Genres = genreOfFilms
             };
 
             return View("Movies", model);

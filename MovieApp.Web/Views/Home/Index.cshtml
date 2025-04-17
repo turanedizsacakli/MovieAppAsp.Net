@@ -1,4 +1,4 @@
-﻿@model Movie;
+﻿@model HomePageViewModel;
 
 @* @{
     Layout = "_Layout2";
@@ -12,6 +12,10 @@
 
 <h1>Film Listesi</h1>
 <div id="filmler">
-      @await Html.PartialAsync("_movie",Model)
+    @foreach (var film in Model.PopularFilms)
+    {
+        @await Html.PartialAsync("_movie", film)
+    }
+      
 </div>
     
