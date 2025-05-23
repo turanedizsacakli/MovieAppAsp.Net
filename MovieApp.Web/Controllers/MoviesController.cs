@@ -17,15 +17,6 @@ namespace MovieApp.Web.Controllers
         }
         public IActionResult List()
         {
-            
-            //var genreOfFilms = new List<Genre>()
-            //{
-            //    new Genre{Name="Macera"},
-            //    new Genre{Name="Aşk"},
-            //    new Genre{Name="Komedi"},
-            //    new Genre{Name="Savaş"}
-
-            //};
 
             var model = new MoviesViewModel()
             {
@@ -35,9 +26,11 @@ namespace MovieApp.Web.Controllers
 
             return View("Movies", model);
         }
-        public IActionResult Details()
+        public IActionResult Details(int id)
         {
-            return View();
+
+
+            return View(MovieRepository.GetById(id));
         }
     }
 }
