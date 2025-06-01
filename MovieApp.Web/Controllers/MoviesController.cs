@@ -15,12 +15,16 @@ namespace MovieApp.Web.Controllers
         {
             return View();
         }
-        public IActionResult List()
+        public IActionResult List(int? id)
         {
-
+            var movies = MovieRepository.Movies;
+            if (id!=null)
+            {
+                movies = movies.Where(m => m.GenreId == id).ToList();
+            }
             var model = new MoviesViewModel()
             {
-                Movies = MovieRepository.Movies
+                Movies = movies
                 //Genres = genreOfFilms
             };
 
